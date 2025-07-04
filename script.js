@@ -35,12 +35,43 @@ function resetSimulation() {
 
 function drawCar() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'blue';
-  ctx.fillRect(car.x, 100, 60, 30); // car body
-  ctx.fillStyle = 'black';
+
+  const carWidth = 100;
+  const carHeight = 40;
+  const roofHeight = 20;
+  const carY = 120;
+
+  // Car body
+  ctx.fillStyle = '#007bff'; // blue body
+  ctx.fillRect(car.x, carY, carWidth, carHeight);
+
+  // Roof (sloped)
+  ctx.fillStyle = '#3399ff';
   ctx.beginPath();
-  ctx.arc(car.x + 10, 135, 8, 0, Math.PI * 2); // wheel 1
-  ctx.arc(car.x + 50, 135, 8, 0, Math.PI * 2); // wheel 2
+  ctx.moveTo(car.x + 20, carY);
+  ctx.lineTo(car.x + 40, carY - roofHeight);
+  ctx.lineTo(car.x + 60, carY - roofHeight);
+  ctx.lineTo(car.x + 80, carY);
+  ctx.closePath();
+  ctx.fill();
+
+  // Windows
+  ctx.fillStyle = '#cceeff';
+  ctx.fillRect(car.x + 42, carY - roofHeight + 2, 16, 16);
+  ctx.fillRect(car.x + 22, carY - roofHeight + 2, 16, 16);
+
+  // Wheels
+  ctx.fillStyle = '#333';
+  ctx.beginPath();
+  ctx.arc(car.x + 25, carY + carHeight + 10, 12, 0, Math.PI * 2); // front wheel
+  ctx.arc(car.x + 75, carY + carHeight + 10, 12, 0, Math.PI * 2); // rear wheel
+  ctx.fill();
+
+  // Wheel hubs
+  ctx.fillStyle = '#aaa';
+  ctx.beginPath();
+  ctx.arc(car.x + 25, carY + carHeight + 10, 5, 0, Math.PI * 2);
+  ctx.arc(car.x + 75, carY + carHeight + 10, 5, 0, Math.PI * 2);
   ctx.fill();
 }
 
@@ -65,7 +96,7 @@ function loop(timestamp) {
   simulateStep(dt);
   drawCar();
 
-  if (car.x < canvas.width - 80) {
+  if (car.x < canvas.width - 120) {
     requestAnimationFrame(loop);
   }
 }
