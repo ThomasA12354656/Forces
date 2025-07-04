@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Physics Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Car Physics Simulator</h1>
+    
+    <div class="controls">
+      <label>Mass (kg): <input type="number" id="mass" value="1000" /></label>
+      <label>Applied Force (N): <input type="number" id="force" value="2000" /></label>
+      <label>Friction (N): <input type="number" id="friction" value="300" /></label>
+      <button id="startBtn">Start</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <canvas id="simCanvas" width="800" height="200"></canvas>
+
+    <div class="info">
+      <p><strong>Velocity:</strong> <span id="velocity">0</span> m/s</p>
+      <p><strong>Acceleration:</strong> <span id="acceleration">0</span> m/s²</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
