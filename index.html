@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forces Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Forces Simulator</h1>
+  <canvas id="forcesCanvas" width="600" height="400"></canvas>
+
+  <div class="controls">
+    <label>Mass:
+      <input type="range" id="massSlider" min="1" max="20" value="5">
+      <span id="massValue">5 kg</span>
+    </label>
+
+    <label>Force:
+      <input type="range" id="forceSlider" min="0" max="100" value="50">
+      <span id="forceValue">50 N</span>
+    </label>
+
+    <label>Friction:
+      <input type="checkbox" id="frictionToggle" checked>
+    </label>
+
+    <button onclick="resetBlock()">Reset</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
